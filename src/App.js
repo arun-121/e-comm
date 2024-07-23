@@ -14,9 +14,6 @@ function App() {
 
   return (
     <>
-      <button onClick={() => dispatch(setCategoryFilter("women"))}>
-        category
-      </button>
       <button onClick={() => dispatch(setPriceFilter(900))}>amnt</button>
       <button onClick={() => dispatch(setSortedFilter("descending"))}>
         sort
