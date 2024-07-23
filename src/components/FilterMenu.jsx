@@ -17,7 +17,7 @@ import {
   setSortedFilter,
 } from "../redux/actions";
 import { useDispatch } from "react-redux";
-const FilterUI = () => {
+const FilterMenu = () => {
   const dispatch = useDispatch();
   return (
     <>
@@ -128,7 +128,7 @@ const FilterUI = () => {
   );
 };
 
-export default FilterUI;
+export default FilterMenu;
 
 /*
 

@@ -1,7 +1,7 @@
 import { Flex, Popover, Text } from "@sparrowengg/twigs-react";
-import ProductDetailView from "./ProductDetailView";
-import SideBar from "./SideBar";
-import Bag from "./Bag";
+import ProductDetailView from "../components/ProductDetailView";
+import SideBar from "../components/SideBar";
+import Bag from "../components/Bag";
 const ProductPage = () => {
   return (
     <>

@@ -1,11 +1,9 @@
-import Bag from "./Bag";
 import { Flex, Button, toast } from "@sparrowengg/twigs-react";
-import SideBar from "./SideBar";
-import OrderSummary from "./OrderSummary";
-import ShippingAddress from "./ShippingAddress";
-import CartItems from "./CartItems";
-import { DialogUI } from "./DialogUI";
+import CartItems from "../components/CartItems";
+import Bag from "../components/Bag";
+import SideBar from "../components/SideBar";
 
+import { DialogUI } from "../components/DialogUI";
 const CheckOutPage = () => {
   return (
     <Flex css={{ height: "100vh", gap: "30px" }}>
