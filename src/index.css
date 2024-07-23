@@ -1,0 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+body {
+  background-color: #ededed;
+}
+
+.icon-hover {
+  transition: all 0s ease;
+}
+.icon-hover:hover {
+  border-bottom: solid 2px red;
+}
