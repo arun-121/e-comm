@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const SearchBar = () => {
+  console.log("rendered");
   const navigate = useNavigate();
   const [query, setQuery] = useState("");
   const [isSearchFocused, setSearchFocused] = useState(false);
@@ -10,6 +11,7 @@ const SearchBar = () => {
   const [cachedResponse, setCachedResponse] = useState({});
 
   function fetchSuggestions() {
+    console.log("rendered");
     fetch(`http://localhost:3001/search/${query}`)
       .then((res) => res.json())
       .then((data) => {
@@ -19,6 +21,7 @@ const SearchBar = () => {
   }
 
   useEffect(() => {
+    console.log("query changed");
     if (query === "") return;
     if (cachedResponse[query]) {
       setSuggestionUI(cachedResponse[query]);
@@ -28,6 +31,7 @@ const SearchBar = () => {
       fetchSuggestions();
     }, 500);
     return () => {
+      console.log("unmounted");
       clearTimeout(delayedCall);
     };
   }, [query]);

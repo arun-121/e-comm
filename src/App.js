@@ -6,15 +6,15 @@ import {
   setCategoryFilter,
   setPriceFilter,
   setSortedFilter,
+  setTheme,
 } from "./redux/actions";
+import { Flex, Select, Text, Button, toast } from "@sparrowengg/twigs-react";
 
 function App() {
   const dispatch = useDispatch();
-  const cart = useSelector((state) => state.cart);
-
   return (
     <>
-      <button onClick={() => dispatch(setPriceFilter(900))}>amnt</button>
+      <Text css={{ backgroundColor: "$primary" }}>this is a sample text</Text>
     </>
   );
 }

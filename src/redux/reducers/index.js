@@ -9,6 +9,7 @@ const initialState = {
     sortOrder: null,
   },
   address: null,
+  theme: "light",
 };
 
 const reducer = (state = initialState, action) => {
@@ -128,6 +129,11 @@ const reducer = (state = initialState, action) => {
         address: action.address,
       };
 
+    case "SET_THEME":
+      return {
+        ...state,
+        theme: action.theme,
+      };
     default:
       return state;
   }

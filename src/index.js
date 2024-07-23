@@ -19,7 +19,7 @@ import ProductPage from "./pages/ProductPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <ThemeProvider theme={theme}>
+  <ThemeProvider theme={theme["dark"]}>
     <Provider store={store}>
       <RouteProvider />
       <Toastr duration={1000} />
@@ -33,6 +33,7 @@ function RouteProvider() {
       <Router>
         <Routes>
           <Route path="/home" element={<HomePage />} />
+          <Route path="/" element={<App />} />
           <Route path="/checkout" element={<CheckOutPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="product/:id" element={<ProductPage />} />
