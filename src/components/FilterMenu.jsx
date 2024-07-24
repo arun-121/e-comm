@@ -10,8 +10,6 @@ import {
   Radio,
 } from "@sparrowengg/twigs-react";
 import {
-  filterProducts,
-  sortFilteredProducts,
   setCategoryFilter,
   setPriceFilter,
   setSortedFilter,
@@ -21,7 +19,6 @@ const FilterMenu = () => {
   const dispatch = useDispatch();
   return (
     <>
-      {/* <Text css={{ textAlign: "center" }}>Filter</Text> */}
       <Flex
         css={{ background: "#ffffff", width: "30%" }}
         flexDirection="column"
@@ -32,7 +29,7 @@ const FilterMenu = () => {
             <AccordionItem value="item-1">
               <AccordionTrigger>Categories</AccordionTrigger>
               <AccordionContent>
-                <Flex flexDirection="column" gap="10px">
+                <Flex flexDirection="column" gap="$5">
                   <Checkbox
                     id="men's clothing"
                     size="md"
@@ -72,7 +69,7 @@ const FilterMenu = () => {
             <AccordionItem value="item-2">
               <AccordionTrigger>Price</AccordionTrigger>
               <AccordionContent>
-                <Flex flexDirection="column" gap="10px">
+                <Flex flexDirection="column" gap="$5">
                   <Checkbox
                     id="100rs"
                     size="md"
@@ -108,7 +105,7 @@ const FilterMenu = () => {
             <AccordionItem value="item-3">
               <AccordionTrigger>Sort</AccordionTrigger>
               <AccordionContent>
-                <Flex flexDirection="column" gap="10px">
+                <Flex flexDirection="column" gap="$5">
                   <RadioGroup onChange={(e) => dispatch(setSortedFilter(e))}>
                     <Radio value="ascending">
                       <Text>low to high</Text>

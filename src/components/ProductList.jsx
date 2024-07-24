@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Flex, Button, Text, toast } from "@sparrowengg/twigs-react";
+import { Flex, Text, toast } from "@sparrowengg/twigs-react";
 import { addToCart, setProducts } from "../redux/actions";
 
 import { useNavigate } from "react-router-dom";
+import ShimmerUi from "./ShimmerUI";
 
 const ProductList = () => {
   const filteredProducts = useSelector((state) => state.filteredProducts);
@@ -35,29 +36,16 @@ const ProductList = () => {
   };
   useEffect(() => {
     fetchData();
-    console.log("rendered");
   }, []);
 
-  useEffect(() => {
-    // console.log("products filtered");
-  }, [filteredProducts]);
   return (
     <>
       <Flex
-        // justifyContent="space-between"
-        onScroll={(e) => {
-          if (
-            e.target.scrollHeight - e.target.scrollTop ===
-            e.target.clientHeight
-          ) {
-            console.log("reached");
-          }
-        }}
         css={{
           flexWrap: "wrap",
-          gap: "20px",
+          gap: "$10",
           overflow: "scroll",
-          padding: "5px",
+          padding: "$2",
           width: "100%",
         }}
       >
@@ -70,7 +58,7 @@ const ProductList = () => {
                 width: "260px",
                 height: "330px",
                 justifyContent: "space-between",
-                padding: "5px",
+                padding: "$2",
                 borderRadius: "13px",
                 background: "#ffffff",
 
@@ -117,29 +105,7 @@ const ProductList = () => {
 
         {isLoading && (
           <>
-            <Flex
-              justifyContent="center"
-              css={{
-                flexWrap: "wrap",
-                gap: "20px",
-                overflow: "scroll",
-                padding: "5px",
-                width: "100%",
-              }}
-            >
-              {new Array(20).fill("").map((ele, i) => (
-                <Flex
-                  key={i}
-                  css={{
-                    width: "260px",
-                    height: "330px",
-                    // justifyContent: "space-between",
-                    padding: "5px",
-                    background: "lightgray",
-                  }}
-                ></Flex>
-              ))}
-            </Flex>
+            <ShimmerUi />
           </>
         )}
       </Flex>

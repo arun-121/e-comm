@@ -1,53 +1,43 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Flex, Popover, Text, Button } from "@sparrowengg/twigs-react";
-import { removeFromCart, setTotalAmount } from "../redux/actions";
+import { Flex, Text, Button } from "@sparrowengg/twigs-react";
+import { setTotalAmount } from "../redux/actions";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useMemo } from "react";
-const Bag = () => {
+const BagItems = () => {
   const cart = useSelector((state) => state.cart);
   const totalAmount = useSelector((state) => state.totalAmount);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    let tot = 0;
+    let total = 0;
     cart.forEach((ele) => {
-      tot = tot + Number(ele.cartCount) * Number(ele.price);
+      total = total + Number(ele.cartCount) * Number(ele.price);
     });
-    tot = Number(tot.toFixed(3));
-    dispatch(setTotalAmount(tot));
+    total = Number(total.toFixed(3));
+    dispatch(setTotalAmount(total));
   }, [cart]);
-
-  // const bagTotal = useMemo(() => {
-  //   let tot = 0;
-  //   cart.forEach((ele) => {
-  //     tot = tot + Number(ele.cartCount) * Number(ele.price);
-  //   });
-  //   return tot.toFixed(2);
-  // }, [cart]);
   return (
     <>
       <Flex
         flexDirection="column"
         justifyContent="space-between"
-        gap="10px"
+        gap="$5"
         css={{ width: "300px", overflow: "scroll", height: "100%" }}
       >
         <Text
           css={{
-            marginTop: "30px",
-            marginBottom: "30px",
-            height: "50px",
+            marginBlock: "$15",
             textAlign: "center",
-            fontSize: "2rem",
-            fontWeight: "bold",
+            fontSize: "$3xl",
+            fontWeight: "$7",
           }}
         >
           My Bag
         </Text>
         <Flex
           css={{ flexWrap: "wrap", overflow: "scroll" }}
-          gap="10px"
+          gap="$5"
           justifyContent="center"
         >
           {cart.map((ele) => (
@@ -59,18 +49,18 @@ const Bag = () => {
                 width: "90px",
                 height: "90px",
                 background: "#ffffff",
-                borderRadius: "10px",
+                borderRadius: "100%",
                 position: "relative",
               }}
             >
-              <img src={ele.image} alt="" width={"80px"} height={"80px"} />
+              <img src={ele.image} alt="" width={"40px"} height={"40px"} />
               <Flex
                 css={{
                   position: "absolute",
                   width: "20px",
                   height: "20px",
                   borderRadius: "100%",
-                  top: 0,
+                  top: 10,
                   left: 0,
                   background: "red",
                   color: "#ffffff",
@@ -88,8 +78,8 @@ const Bag = () => {
             <Text
               css={{
                 textAlign: "center",
-                fontSize: "1.5rem",
-                fontWeight: "500",
+                fontSize: "$md",
+                fontWeight: "$50",
               }}
             >
               Your cart is empty
@@ -112,13 +102,13 @@ const Bag = () => {
         <Flex
           justifyContent="space-between"
           alignItems="center"
-          css={{ marginBottom: "5px", padding: "5px" }}
+          css={{ marginBottom: "$2", padding: "$2" }}
         >
-          <Button css={{ padding: "20px" }} onClick={() => navigate("/cart")}>
+          <Button css={{ padding: "$10" }} onClick={() => navigate("/cart")}>
             View cart
           </Button>
           <Button
-            css={{ padding: "20px" }}
+            css={{ padding: "$10" }}
             onClick={() => navigate("/checkout")}
           >
             Checkout
@@ -128,4 +118,4 @@ const Bag = () => {
     </>
   );
 };
-export default Bag;
+export default BagItems;

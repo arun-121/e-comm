@@ -1,17 +1,17 @@
 import React, { useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
 import store from "./redux/store";
-import { Provider, useSelector } from "react-redux";
-import CartPage from "./components/CartPage";
+import { Provider } from "react-redux";
+
+import CartPage from "./pages/CartPage";
 import {
   ThemeProvider,
   DialogsManager,
   Toastr,
 } from "@sparrowengg/twigs-react";
 
-import theme from "./twigs.config";
+import theme from "./utils/twigs.config";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import CheckOutPage from "./pages/CheckOutPage";
@@ -33,7 +33,6 @@ function RouteProvider() {
       <Router>
         <Routes>
           <Route path="/home" element={<HomePage />} />
-          <Route path="/" element={<App />} />
           <Route path="/checkout" element={<CheckOutPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="product/:id" element={<ProductPage />} />

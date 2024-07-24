@@ -9,7 +9,7 @@ const OrderSummary = () => {
     <Flex
       flexDirection="column"
       justifyContent="space-between"
-      gap="10px"
+      gap="$5"
       css={{
         borderRadius: "10px",
       }}

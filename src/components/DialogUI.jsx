@@ -1,12 +1,10 @@
 import {
   Dialog,
   DialogTitle,
-  DialogDescription,
   DialogClose,
   DialogTrigger,
   DialogContent,
   Button,
-  Text,
   Flex,
 } from "@sparrowengg/twigs-react";
 import ShippingAddress from "./ShippingAddress";
@@ -16,7 +14,7 @@ export const DialogUI = () => {
     <>
       <Dialog>
         <DialogTrigger asChild>
-          <Button size="sm" css={{ padding: "20px", marginBottom: "10px" }}>
+          <Button size="sm" css={{ padding: "$10", marginBottom: "$5" }}>
             Click to Proceed
           </Button>
         </DialogTrigger>
@@ -30,7 +28,7 @@ export const DialogUI = () => {
               <Button
                 color="error"
                 size="md"
-                css={{ width: "100%", marginTop: "5px" }}
+                css={{ width: "100%", marginTop: "$2" }}
               >
                 Close
               </Button>

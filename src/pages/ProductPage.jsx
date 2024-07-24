@@ -1,11 +1,11 @@
-import { Flex, Popover, Text } from "@sparrowengg/twigs-react";
+import { Flex } from "@sparrowengg/twigs-react";
 import ProductDetailView from "../components/ProductDetailView";
 import SideBar from "../components/SideBar";
-import Bag from "../components/Bag";
+import BagItems from "../components/BagItems";
 const ProductPage = () => {
   return (
     <>
-      <Flex css={{ height: "100%" }} gap="10px">
+      <Flex css={{ height: "100%" }} gap="$5">
         <Flex>
           <SideBar />
         </Flex>
@@ -13,7 +13,7 @@ const ProductPage = () => {
           <ProductDetailView />
         </Flex>
         <Flex>
-          <Bag />
+          <BagItems />
         </Flex>
       </Flex>
     </>

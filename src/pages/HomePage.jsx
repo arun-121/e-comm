@@ -1,26 +1,21 @@
 import { Flex } from "@sparrowengg/twigs-react";
-
 import SideBar from "../components/SideBar";
 import SearchBar from "../components/SearchBar";
-import CartPage from "../components/CartPage";
-import Bag from "../components/Bag";
+import BagItems from "../components/BagItems";
 import ProductList from "../components/ProductList";
 import FilterMenu from "../components/FilterMenu";
-console.log(FilterMenu);
+
 const HomePage = () => {
   return (
-    <Flex css={{ gap: "10px", height: "100%" }}>
+    <Flex css={{ gap: "$5", height: "100%" }}>
       <SideBar />
-      {/* <Flex css={{ width: "300px", background: "aliceblue" }}> */}
       <FilterMenu />
-      {/* </Flex> */}
-
       <Flex flexDirection="column" css={{ width: "100%" }}>
         <SearchBar />
         <ProductList />
       </Flex>
       <Flex>
-        <Bag />
+        <BagItems />
       </Flex>
     </Flex>
   );

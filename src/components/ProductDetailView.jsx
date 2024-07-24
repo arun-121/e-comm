@@ -1,6 +1,6 @@
-import { Button, Flex, Popover, Text } from "@sparrowengg/twigs-react";
+import { Button, Flex, Text } from "@sparrowengg/twigs-react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import ReactStarsRating from "react-awesome-stars-rating";
 import { addToCart } from "../redux/actions";
 import { BiPurchaseTag } from "react-icons/bi";
@@ -13,9 +13,9 @@ const ProductDetailView = () => {
   return (
     <Flex
       flexDirection="column"
-      css={{ padding: "20px", gap: "10px", overflow: "scroll" }}
+      css={{ padding: "$10", gap: "$5", overflow: "scroll" }}
     >
-      <Flex gap="20px">
+      <Flex gap="$10">
         <Flex justifyContent="center" alignItems="center">
           <img
             src={selectedProduct?.image}
@@ -26,10 +26,10 @@ const ProductDetailView = () => {
           />
         </Flex>
         <Flex justifyContent="space-between" flexDirection="column">
-          <Flex flexDirection="column" gap="2rem">
+          <Flex flexDirection="column" gap="$15">
             <Text
               weight={"bold"}
-              css={{ lineHeight: "normal", fontSize: "32px" }}
+              css={{ lineHeight: "normal", fontSize: "$3xl" }}
             >
               {selectedProduct?.title}
             </Text>
@@ -40,8 +40,8 @@ const ProductDetailView = () => {
             >
               {selectedProduct?.category}
             </Text>
-            <Flex alignItems="center" gap="3rem">
-              <Flex alignItems="center" gap="10px">
+            <Flex alignItems="center" gap="$15">
+              <Flex alignItems="center" gap="$5">
                 <ReactStarsRating
                   id={id}
                   isEdit={false}
@@ -49,7 +49,7 @@ const ProductDetailView = () => {
                 />
                 <Text weight={"bold"}>{selectedProduct?.rating.rate}/5</Text>
               </Flex>
-              <Flex alignItems="center" gap="10px">
+              <Flex alignItems="center" gap="$5">
                 <BiPurchaseTag />
                 <Text weight={"bold"}>{selectedProduct?.rating.count}</Text>
               </Flex>

@@ -20,7 +20,6 @@ export const setProducts = (data) => {
 };
 
 export const setTotalAmount = (amount) => {
-  console.log(amount);
   return {
     type: "SET_TOTAL_AMOUNT",
     totalAmount: amount,

@@ -1,6 +1,6 @@
 import { Flex, Button, toast } from "@sparrowengg/twigs-react";
 import CartItems from "../components/CartItems";
-import Bag from "../components/Bag";
+import BagItems from "../components/BagItems";
 import SideBar from "../components/SideBar";
 
 import { DialogUI } from "../components/DialogUI";
@@ -13,13 +13,13 @@ const CheckOutPage = () => {
       <Flex
         // justifyContent="space-between"
         flexDirection="column"
-        css={{ gap: "20px" }}
+        css={{ gap: "$10" }}
       >
         <CartItems />
         <DialogUI />
       </Flex>
       <Flex>
-        <Bag />
+        <BagItems />
       </Flex>
     </Flex>
   );

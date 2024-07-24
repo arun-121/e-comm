@@ -1,4 +1,4 @@
-import { Flex, Text, Button, Textarea } from "@sparrowengg/twigs-react";
+import { Flex, Text, Textarea } from "@sparrowengg/twigs-react";
 import { useSelector } from "react-redux";
 import { SetAddress } from "../redux/actions";
 import { useDispatch } from "react-redux";
@@ -11,10 +11,7 @@ const ShippingAddress = () => {
       flexDirection="column"
       css={{
         background: "white",
-        // padding: "10px",
-        // height: "100px",
-        // width: "300px",
-        gap: "10px",
+        gap: "$5",
         borderRadius: "10px",
       }}
     >

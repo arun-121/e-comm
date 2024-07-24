@@ -43,8 +43,7 @@ const SearchBar = () => {
         justifyContent="center"
         alignItems="center"
         css={{
-          marginBottom: "30px",
-          marginTop: "30px",
+          marginBlock: "$15",
           position: "relative",
         }}
       >
@@ -56,9 +55,8 @@ const SearchBar = () => {
           css={{
             width: "500px",
             height: "50px",
-
-            padding: "5px",
-            marginBottom: "5px",
+            padding: "$2",
+            marginBottom: "$2",
           }}
           placeholder="search here"
         />
@@ -74,14 +72,14 @@ const SearchBar = () => {
               overflow: "scroll",
               position: "absolute",
               top: "100%",
-              padding: "10px",
-              gap: "20px",
+              padding: "$5",
+              gap: "$10",
               zIndex: 10,
             }}
           >
             {suggestionUI?.map((ele) => (
               <Flex
-                gap="10px"
+                gap="$5"
                 key={ele.id}
                 css={{ cursor: "pointer" }}
                 onMouseDown={() => navigate(`/product/${ele.id}`)}

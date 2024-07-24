@@ -1,5 +1,5 @@
-import { Flex, Popover, Text, Button, dialogs } from "@sparrowengg/twigs-react";
-import { ShoppingCart, House, LogOut, PanelTopDashed } from "lucide-react";
+import { Flex } from "@sparrowengg/twigs-react";
+
 import { FaShoppingCart } from "react-icons/fa";
 import { IoHome } from "react-icons/io5";
 
@@ -24,7 +24,7 @@ const SideBar = () => {
             alt=""
           />
         </Flex>
-        <Flex flexDirection="column" css={{ gap: "40px" }}>
+        <Flex flexDirection="column" css={{ gap: "$20" }}>
           <Flex>
             <IoHome
               onClick={() => navigate("/home")}
@@ -44,9 +44,8 @@ const SideBar = () => {
           <FaSignOutAlt
             className="icon-hover"
             onClick={handleLogOut}
-            style={{ width: "30px", height: "30px", marginBottom: "10px" }}
+            style={{ width: "30px", height: "30px", marginBottom: "5px" }}
           />
-          {/* <LogOut className="icon-hover" /> */}
         </Flex>
       </Flex>
     </>

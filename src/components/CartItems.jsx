@@ -2,7 +2,7 @@ import ReactStarsRating from "react-awesome-stars-rating";
 import { addToCart, removeFromCart } from "../redux/actions";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Flex, Popover, Text, Button } from "@sparrowengg/twigs-react";
+import { Flex, Text, Button } from "@sparrowengg/twigs-react";
 import EmptyCartUI from "./EmptyCartUI";
 const CartItems = () => {
   const cart = useSelector((state) => state.cart);
@@ -17,17 +17,16 @@ const CartItems = () => {
         <Flex flexDirection="column" css={{ overflow: "scroll" }}>
           <Text
             css={{
-              marginBottom: "30px",
-              marginTop: "30px",
+              marginBlock: "$15",
               textAlign: "center",
-              fontSize: "2rem",
+              fontSize: "$3xl",
             }}
           >
             Review Your Bag Items
           </Text>
           <Flex
             flexDirection="column"
-            css={{ overflow: "scroll", gap: "30px", padding: "20px" }}
+            css={{ overflow: "scroll", gap: "$15", padding: "$10" }}
           >
             {cart.map((ele) => (
               <Flex
@@ -35,8 +34,8 @@ const CartItems = () => {
                 css={{
                   background: "#ffffff",
                   borderRadius: "20px",
-                  gap: "10px",
-                  padding: "10px",
+                  gap: "$5",
+                  padding: "$5",
                 }}
               >
                 <Flex
@@ -55,18 +54,18 @@ const CartItems = () => {
                   justifyContent="space-between"
                   css={{ width: "100%" }}
                 >
-                  <Text css={{ fontWeight: "bold", fontSize: "1.3rem" }}>
+                  <Text css={{ fontWeight: "bold", fontSize: "$lg" }}>
                     {ele.title}
                   </Text>
                   <Text css={{ color: "#60695C" }}>{ele.category}</Text>
                   <Text css={{ color: "$primary" }}>{ele.description}</Text>
-                  <Flex alignItems="center" gap="10px">
+                  <Flex alignItems="center" gap="$5">
                     <ReactStarsRating isEdit={false} value={ele.rating.rate} />
                     <Text weight={"bold"}>{ele.rating.rate}/5</Text>
                   </Flex>
                   <Flex justifyContent="space-between">
                     <Text weight={"bold"}>₹ {ele.price}</Text>
-                    <Flex gap="10px">
+                    <Flex gap="$5">
                       <Text
                         onClick={() => {
                           dispatch(removeFromCart(ele.id));

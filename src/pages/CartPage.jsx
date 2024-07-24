@@ -1,9 +1,7 @@
 import { Flex, Popover, Text, Button } from "@sparrowengg/twigs-react";
-
-import SideBar from "./SideBar";
-import Bag from "./Bag";
-import CartItems from "./CartItems";
-
+import SideBar from "../components/SideBar";
+import CartItems from "../components/CartItems";
+import BagItems from "../components/BagItems";
 const CartPage = () => {
   return (
     <>
@@ -13,7 +11,7 @@ const CartPage = () => {
           <CartItems />
         </Flex>
         <Flex>
-          <Bag />
+          <BagItems />
         </Flex>
       </Flex>
     </>
