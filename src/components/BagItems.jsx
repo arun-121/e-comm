@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Flex, Text, Button } from "@sparrowengg/twigs-react";
+import { Flex, Text, Button, Heading } from "@sparrowengg/twigs-react";
 import { setTotalAmount } from "../redux/actions";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useMemo } from "react";
@@ -25,16 +25,16 @@ const BagItems = () => {
         gap="$5"
         css={{ width: "300px", overflow: "scroll", height: "100%" }}
       >
-        <Text
+        <Heading
+          size="h2"
           css={{
             marginBlock: "$15",
             textAlign: "center",
-            fontSize: "$3xl",
-            fontWeight: "$7",
           }}
         >
           My Bag
-        </Text>
+        </Heading>
+
         <Flex
           css={{ flexWrap: "wrap", overflow: "scroll" }}
           gap="$5"
