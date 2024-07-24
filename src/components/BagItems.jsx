@@ -96,23 +96,25 @@ const BagItems = () => {
             </Flex>
           </Flex>
         )}
-        <Text weight={"bold"} css={{ textAlign: "center" }}>
-          Bag Total : ₹ {totalAmount}
-        </Text>
-        <Flex
-          justifyContent="space-between"
-          alignItems="center"
-          css={{ marginBottom: "$2", padding: "$2" }}
-        >
-          <Button css={{ padding: "$10" }} onClick={() => navigate("/cart")}>
-            View cart
-          </Button>
-          <Button
-            css={{ padding: "$10" }}
-            onClick={() => navigate("/checkout")}
+        <Flex flexDirection="column" gap="$2">
+          <Text weight={"bold"} css={{ textAlign: "center" }}>
+            {`Bag Total : ₹${totalAmount}`}
+          </Text>
+          <Flex
+            justifyContent="space-between"
+            alignItems="center"
+            css={{ marginBottom: "$2", padding: "$2" }}
           >
-            Checkout
-          </Button>
+            <Button css={{ padding: "$10" }} onClick={() => navigate("/cart")}>
+              View cart
+            </Button>
+            <Button
+              css={{ padding: "$10" }}
+              onClick={() => navigate("/checkout")}
+            >
+              Checkout
+            </Button>
+          </Flex>
         </Flex>
       </Flex>
     </>
