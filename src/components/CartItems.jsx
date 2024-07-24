@@ -3,7 +3,7 @@ import { addToCart, removeFromCart } from "../redux/actions";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Flex, Text, Button } from "@sparrowengg/twigs-react";
-import EmptyCartUI from "./EmptyCartUI";
+import EmptyCartUI from "./EmptyCart";
 const CartItems = () => {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
@@ -12,8 +12,10 @@ const CartItems = () => {
   return (
     <>
       {cart.length === 0 ? (
+        // <Flex css={{ width: "100%" }}>
         <EmptyCartUI />
       ) : (
+        // </Flex>
         <Flex flexDirection="column" css={{ overflow: "scroll" }}>
           <Text
             css={{

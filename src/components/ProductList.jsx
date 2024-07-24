@@ -4,7 +4,7 @@ import { Flex, Text, toast } from "@sparrowengg/twigs-react";
 import { addToCart, setProducts } from "../redux/actions";
 
 import { useNavigate } from "react-router-dom";
-import ShimmerUi from "./ShimmerUI";
+import HomeSkeleton from "./HomeSkeleton";
 
 const ProductList = () => {
   const filteredProducts = useSelector((state) => state.filteredProducts);
@@ -105,7 +105,7 @@ const ProductList = () => {
 
         {isLoading && (
           <>
-            <ShimmerUi />
+            <HomeSkeleton />
           </>
         )}
       </Flex>

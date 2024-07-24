@@ -9,7 +9,7 @@ import {
 } from "@sparrowengg/twigs-react";
 import ShippingAddress from "./ShippingAddress";
 import OrderSummary from "./OrderSummary";
-export const DialogUI = () => {
+export const CheckoutDialog = () => {
   return (
     <>
       <Dialog>

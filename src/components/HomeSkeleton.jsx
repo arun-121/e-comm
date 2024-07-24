@@ -1,5 +1,5 @@
 import { Flex } from "@sparrowengg/twigs-react";
-const ShimmerUi = () => {
+const HomeSkeleton = () => {
   return (
     <Flex
       justifyContent="center"
@@ -25,4 +25,4 @@ const ShimmerUi = () => {
   );
 };
 
-export default ShimmerUi;
+export default HomeSkeleton;
