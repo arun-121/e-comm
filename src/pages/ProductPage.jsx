@@ -5,7 +5,7 @@ import Bag from "../components/Bag";
 const ProductPage = () => {
   return (
     <>
-      <Flex css={{ height: "100vh" }} gap="10px">
+      <Flex css={{ height: "100%" }} gap="10px">
         <Flex>
           <SideBar />
         </Flex>

@@ -6,7 +6,7 @@ import SideBar from "../components/SideBar";
 import { DialogUI } from "../components/DialogUI";
 const CheckOutPage = () => {
   return (
-    <Flex css={{ height: "100vh", gap: "30px" }}>
+    <Flex css={{ height: "100%", gap: "30px" }}>
       <Flex>
         <SideBar />
       </Flex>

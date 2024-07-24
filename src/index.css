@@ -9,3 +9,7 @@ body {
 .icon-hover:hover {
   border-bottom: solid 2px red;
 }
+
+#root {
+  height: 100vh;
+}
