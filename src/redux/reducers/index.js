@@ -9,6 +9,7 @@ const initialState = {
     sortOrder: null,
   },
   address: null,
+  theme: "light",
 };
 
 const reducer = (state = initialState, action) => {
@@ -18,15 +19,17 @@ const reducer = (state = initialState, action) => {
       const itemInCart = state.cart.find((ele) => ele.id === itemId);
 
       if (itemInCart) {
-        const updatedCart = state.cart.map((ele) =>
-          ele.id === itemId ? { ...ele, cartCount: ele.cartCount + 1 } : ele
+        const updatedCart = state.cart.map((product) =>
+          product.id === itemId
+            ? { ...product, cartCount: product.cartCount + 1 }
+            : product
         );
         return {
           ...state,
           cart: updatedCart,
         };
       } else {
-        const item = state.products.find((ele) => ele.id === itemId);
+        const item = state.products.find((product) => product.id === itemId);
         item.cartCount++;
         return {
           ...state,
@@ -37,20 +40,22 @@ const reducer = (state = initialState, action) => {
 
     case "REMOVE_FROM_CART": {
       const itemID = parseInt(action.id);
-      const item = state.cart.find((ele) => ele.id === itemID);
+      const item = state.cart.find((product) => product.id === itemID);
       const newCartCount = item.cartCount === 1 ? 0 : item.cartCount - 1;
 
       if (newCartCount === 0) {
-        //remove the item from cart
-        const updatedCart = state.cart.filter((ele) => ele.id !== itemID);
+        const updatedCart = state.cart.filter(
+          (product) => product.id !== itemID
+        );
         return {
           ...state,
           cart: updatedCart,
         };
       } else {
-        //update cart with new cart count
-        const updatedCart = state.cart.map((ele) =>
-          ele.id === itemID ? { ...ele, cartCount: ele.cartCount - 1 } : ele
+        const updatedCart = state.cart.map((product) =>
+          product.id === itemID
+            ? { ...product, cartCount: product.cartCount - 1 }
+            : product
         );
         return {
           ...state,
@@ -60,8 +65,8 @@ const reducer = (state = initialState, action) => {
     }
 
     case "SET_PRODUCTS":
-      const updatedState = action.payload.map((ele) => ({
-        ...ele,
+      const updatedState = action.payload.map((product) => ({
+        ...product,
         cartCount: 0,
       }));
 
@@ -78,7 +83,9 @@ const reducer = (state = initialState, action) => {
 
     case "SET_CATEGORY_FILTER":
       const updatedCategories = state.filters.category.includes(action.category)
-        ? state.filters.category.filter((ele) => ele !== action.category)
+        ? state.filters.category.filter(
+            (category) => category !== action.category
+          )
         : [...state.filters.category, action.category];
 
       return {
@@ -95,7 +102,7 @@ const reducer = (state = initialState, action) => {
 
     case "SET_PRICE_FILTER":
       const updatedPriceList = state.filters.priceUnder.includes(action.price)
-        ? state.filters.priceUnder.filter((ele) => ele !== action.price)
+        ? state.filters.priceUnder.filter((price) => price !== action.price)
         : [...state.filters.priceUnder, action.price];
       return {
         ...state,
@@ -128,6 +135,11 @@ const reducer = (state = initialState, action) => {
         address: action.address,
       };
 
+    case "SET_THEME":
+      return {
+        ...state,
+        theme: action.theme,
+      };
     default:
       return state;
   }
@@ -137,8 +149,8 @@ const applyFilters = (products, filters) => {
   let filtered = [...products];
 
   if (filters.category.length) {
-    filtered = products.filter((ele) =>
-      filters.category.includes(ele.category)
+    filtered = products.filter((product) =>
+      filters.category.includes(product.category)
     );
   }
 
@@ -147,8 +159,6 @@ const applyFilters = (products, filters) => {
       filters.priceUnder.some((price) => product.price <= price)
     );
   }
-
-  //150 [100,300,500]-->
 
   if (filters.sortOrder) {
     filtered.sort((a, b) =>

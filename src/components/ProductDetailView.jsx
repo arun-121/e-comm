@@ -1,6 +1,6 @@
-import { Button, Flex, Popover, Text } from "@sparrowengg/twigs-react";
+import { Button, Flex, Text } from "@sparrowengg/twigs-react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import ReactStarsRating from "react-awesome-stars-rating";
 import { addToCart } from "../redux/actions";
 import { BiPurchaseTag } from "react-icons/bi";
@@ -11,37 +11,30 @@ const ProductDetailView = () => {
   const selectedProduct = products.find((ele) => ele.id === parseInt(id));
 
   return (
-    <Flex
-      flexDirection="column"
-      css={{ padding: "20px", gap: "10px", overflow: "scroll" }}
-    >
-      <Flex gap="20px">
+    <Flex flexDirection="column" gap="$5" css={{ padding: "$10" }}>
+      <Flex gap="$10">
         <Flex justifyContent="center" alignItems="center">
           <img
             src={selectedProduct?.image}
-            alt=""
+            alt="product"
             width={"500px"}
             height={"500px"}
             style={{ borderRadius: "20px" }}
           />
         </Flex>
         <Flex justifyContent="space-between" flexDirection="column">
-          <Flex flexDirection="column" gap="2rem">
+          <Flex flexDirection="column" gap="$15">
             <Text
               weight={"bold"}
-              css={{ lineHeight: "normal", fontSize: "32px" }}
+              css={{ lineHeight: "normal", fontSize: "$3xl" }}
             >
               {selectedProduct?.title}
             </Text>
-            <Text
-              weight={"light"}
-              size={"md"}
-              css={{ color: "rgb(96, 105, 92)" }}
-            >
+            <Text weight={"light"} size={"md"} css={{ color: "$neutral700" }}>
               {selectedProduct?.category}
             </Text>
-            <Flex alignItems="center" gap="3rem">
-              <Flex alignItems="center" gap="10px">
+            <Flex alignItems="center" gap="$15">
+              <Flex alignItems="center" gap="$5">
                 <ReactStarsRating
                   id={id}
                   isEdit={false}
@@ -49,7 +42,7 @@ const ProductDetailView = () => {
                 />
                 <Text weight={"bold"}>{selectedProduct?.rating.rate}/5</Text>
               </Flex>
-              <Flex alignItems="center" gap="10px">
+              <Flex alignItems="center" gap="$5">
                 <BiPurchaseTag />
                 <Text weight={"bold"}>{selectedProduct?.rating.count}</Text>
               </Flex>
@@ -62,7 +55,7 @@ const ProductDetailView = () => {
 
           <Button
             onClick={() => dispatch(addToCart(selectedProduct?.id))}
-            css={{ height: "60px" }}
+            css={{ height: "$15" }}
           >
             Add to Cart
           </Button>
@@ -70,7 +63,6 @@ const ProductDetailView = () => {
       </Flex>
       <Flex css={{ borderBottom: "solid 1px darkgray " }}> </Flex>
       review
-      {/* <Text css={{ heigh: "100%" }}>{selectedProduct?.description}</Text> */}
     </Flex>
   );
 };

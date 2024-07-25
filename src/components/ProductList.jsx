@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Flex, Button, Text, toast } from "@sparrowengg/twigs-react";
+import { Flex, Text, toast } from "@sparrowengg/twigs-react";
 import { addToCart, setProducts } from "../redux/actions";
 
 import { useNavigate } from "react-router-dom";
+import HomeSkeleton from "./HomeSkeleton";
 
 const ProductList = () => {
   const filteredProducts = useSelector((state) => state.filteredProducts);
@@ -12,7 +13,6 @@ const ProductList = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleAddToCart = (id, title) => {
-    //toast
     dispatch(addToCart(id));
     toast({
       variant: "default",
@@ -35,44 +35,31 @@ const ProductList = () => {
   };
   useEffect(() => {
     fetchData();
-    console.log("rendered");
   }, []);
 
-  useEffect(() => {
-    // console.log("products filtered");
-  }, [filteredProducts]);
   return (
     <>
       <Flex
-        // justifyContent="space-between"
-        onScroll={(e) => {
-          if (
-            e.target.scrollHeight - e.target.scrollTop ===
-            e.target.clientHeight
-          ) {
-            console.log("reached");
-          }
-        }}
+        wrap="wrap"
+        gap="$10"
         css={{
-          flexWrap: "wrap",
-          gap: "20px",
-          overflow: "scroll",
-          padding: "5px",
+          overflow: "auto",
+          padding: "$2",
           width: "100%",
         }}
       >
         {(filteredProducts.length == 0 ? products : filteredProducts).map(
-          (ele) => (
+          (product) => (
             <Flex
-              key={ele.id}
+              key={product.id}
               flexDirection="column"
               css={{
                 width: "260px",
                 height: "330px",
                 justifyContent: "space-between",
-                padding: "5px",
+                padding: "$2",
                 borderRadius: "13px",
-                background: "#ffffff",
+                background: "$white900",
 
                 "&:hover": {
                   boxShadow: " rgba(0, 0, 0, 0.35) 0px 5px 15px;",
@@ -83,15 +70,20 @@ const ProductList = () => {
               <Flex
                 justifyContent="center"
                 alignItems="center"
-                onClick={() => handleNavigate(ele.id)}
+                onClick={() => handleNavigate(product.id)}
                 css={{
                   cursor: "pointer",
                   height: "220px",
-                  background: "#ffffff",
+                  background: "$white900",
                   borderRadius: "10px",
                 }}
               >
-                <img src={ele.image} alt="" width={"180px"} height={"180px"} />
+                <img
+                  src={product.image}
+                  alt=""
+                  width={"180px"}
+                  height={"180px"}
+                />
               </Flex>
               <Flex>
                 <Text
@@ -99,15 +91,15 @@ const ProductList = () => {
                     fontWeight: "bold",
                   }}
                 >
-                  {ele.title}
+                  {product.title}
                 </Text>
               </Flex>
               <Flex justifyContent="space-between" alignItems="center">
-                <Text css={{ color: "$primary" }}> ₹ {ele.price}</Text>
+                <Text css={{ color: "$primary" }}> ₹ {product.price}</Text>
                 <img
                   src={"./addToBag-sm.svg"}
                   alt=""
-                  onClick={() => handleAddToCart(ele.id, ele.title)}
+                  onClick={() => handleAddToCart(product.id, product.title)}
                   style={{ cursor: "pointer" }}
                 />
               </Flex>
@@ -117,29 +109,7 @@ const ProductList = () => {
 
         {isLoading && (
           <>
-            <Flex
-              justifyContent="center"
-              css={{
-                flexWrap: "wrap",
-                gap: "20px",
-                overflow: "scroll",
-                padding: "5px",
-                width: "100%",
-              }}
-            >
-              {new Array(20).fill("").map((ele, i) => (
-                <Flex
-                  key={i}
-                  css={{
-                    width: "260px",
-                    height: "330px",
-                    // justifyContent: "space-between",
-                    padding: "5px",
-                    background: "lightgray",
-                  }}
-                ></Flex>
-              ))}
-            </Flex>
+            <HomeSkeleton />
           </>
         )}
       </Flex>

@@ -39,50 +39,55 @@ const SearchBar = () => {
         justifyContent="center"
         alignItems="center"
         css={{
-          marginBottom: "30px",
-          marginTop: "30px",
+          marginBlock: "$15",
           position: "relative",
         }}
       >
         <Input
           onChange={(e) => setQuery(e.target.value)}
           type="text"
+          size="lg"
           onFocus={() => setSearchFocused(true)}
           onBlur={() => setTimeout(() => setSearchFocused(false), 200)}
           css={{
             width: "500px",
-            height: "50px",
 
-            padding: "5px",
-            marginBottom: "5px",
+            padding: "$2",
+            marginBottom: "$2",
           }}
-          placeholder="search here"
+          placeholder="search"
         />
 
         {isSearchFocused && query.length !== 0 && (
           <Flex
             flexDirection="column"
+            gap="$10"
             css={{
               borderRadius: "10px",
               background: "white",
               width: "500px",
               maxHeight: "200px",
-              overflow: "scroll",
+              overflow: "auto",
               position: "absolute",
               top: "100%",
-              padding: "10px",
-              gap: "20px",
+              padding: "$5",
+
               zIndex: 10,
             }}
           >
             {suggestionUI?.map((ele) => (
               <Flex
-                gap="10px"
+                gap="$5"
                 key={ele.id}
                 css={{ cursor: "pointer" }}
-                onMouseDown={() => navigate(`/product/${ele.id}`)}
+                onClick={() => navigate(`/product/${ele.id}`)}
               >
-                <img src={ele.image} alt="" width={"40px"} height={"40px"} />
+                <img
+                  src={ele.image}
+                  alt="product"
+                  width={"40px"}
+                  height={"40px"}
+                />
                 <Text>{ele.title}</Text>
               </Flex>
             ))}

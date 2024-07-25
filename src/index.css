@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 body {
   background-color: #ededed;
 }
@@ -8,4 +7,14 @@ body {
 }
 .icon-hover:hover {
   border-bottom: solid 2px red;
+}
+
+#root {
+  height: 100vh;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  /* width: 0 !important;
+   */
+  display: none;
 }
