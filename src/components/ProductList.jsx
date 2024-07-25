@@ -49,9 +49,9 @@ const ProductList = () => {
         }}
       >
         {(filteredProducts.length == 0 ? products : filteredProducts).map(
-          (ele) => (
+          (product) => (
             <Flex
-              key={ele.id}
+              key={product.id}
               flexDirection="column"
               css={{
                 width: "260px",
@@ -70,7 +70,7 @@ const ProductList = () => {
               <Flex
                 justifyContent="center"
                 alignItems="center"
-                onClick={() => handleNavigate(ele.id)}
+                onClick={() => handleNavigate(product.id)}
                 css={{
                   cursor: "pointer",
                   height: "220px",
@@ -78,7 +78,12 @@ const ProductList = () => {
                   borderRadius: "10px",
                 }}
               >
-                <img src={ele.image} alt="" width={"180px"} height={"180px"} />
+                <img
+                  src={product.image}
+                  alt=""
+                  width={"180px"}
+                  height={"180px"}
+                />
               </Flex>
               <Flex>
                 <Text
@@ -86,15 +91,15 @@ const ProductList = () => {
                     fontWeight: "bold",
                   }}
                 >
-                  {ele.title}
+                  {product.title}
                 </Text>
               </Flex>
               <Flex justifyContent="space-between" alignItems="center">
-                <Text css={{ color: "$primary" }}> ₹ {ele.price}</Text>
+                <Text css={{ color: "$primary" }}> ₹ {product.price}</Text>
                 <img
                   src={"./addToBag-sm.svg"}
                   alt=""
-                  onClick={() => handleAddToCart(ele.id, ele.title)}
+                  onClick={() => handleAddToCart(product.id, product.title)}
                   style={{ cursor: "pointer" }}
                 />
               </Flex>

@@ -83,7 +83,9 @@ const reducer = (state = initialState, action) => {
 
     case "SET_CATEGORY_FILTER":
       const updatedCategories = state.filters.category.includes(action.category)
-        ? state.filters.category.filter((ele) => ele !== action.category)
+        ? state.filters.category.filter(
+            (category) => category !== action.category
+          )
         : [...state.filters.category, action.category];
 
       return {
@@ -100,7 +102,7 @@ const reducer = (state = initialState, action) => {
 
     case "SET_PRICE_FILTER":
       const updatedPriceList = state.filters.priceUnder.includes(action.price)
-        ? state.filters.priceUnder.filter((ele) => ele !== action.price)
+        ? state.filters.priceUnder.filter((price) => price !== action.price)
         : [...state.filters.priceUnder, action.price];
       return {
         ...state,
@@ -147,8 +149,8 @@ const applyFilters = (products, filters) => {
   let filtered = [...products];
 
   if (filters.category.length) {
-    filtered = products.filter((ele) =>
-      filters.category.includes(ele.category)
+    filtered = products.filter((product) =>
+      filters.category.includes(product.category)
     );
   }
 
