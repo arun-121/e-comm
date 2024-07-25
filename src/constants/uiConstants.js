@@ -1,0 +1,1 @@
+export const HOME_SKELETON_ITEMS_COUNT = 20;
