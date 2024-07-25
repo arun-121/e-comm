@@ -9,11 +9,16 @@ import EmptyCart from "../components/EmptyCart";
 const CheckOutPage = () => {
   const cart = useSelector((state) => state.cart);
   return (
-    <Flex css={{ height: "100%", gap: "30px" }}>
+    <Flex gap="$15" css={{ height: "100%" }}>
       <Flex>
         <SideBar />
       </Flex>
-      <Flex flexDirection="column" css={{ gap: "$10", width: "100%" }}>
+      <Flex
+        gap="$10"
+        justifyContent="space-between"
+        flexDirection="column"
+        css={{ width: "100%" }}
+      >
         {cart.length !== 0 ? (
           <>
             <CartItems />

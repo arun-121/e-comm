@@ -16,15 +16,17 @@ const OrderSummary = () => {
     >
       <Text weight={"bold"}>Order Summary</Text>
       <Flex justifyContent="space-between">
-        <Text css={{ color: "gray" }}>Items:</Text>
-        <Text css={{ color: "gray" }}>{totalAmount}</Text>
+        <Text css={{ color: "$neutral500" }}>Items:</Text>
+        <Text css={{ color: "$neutral500" }}>{totalAmount}</Text>
       </Flex>
       <Flex justifyContent="space-between">
-        <Text css={{ color: "gray" }}>Estimated GST:</Text>
-        <Text css={{ color: "gray" }}>{(totalAmount * 0.18).toFixed(2)}</Text>
+        <Text css={{ color: "$neutral500" }}>Estimated GST:</Text>
+        <Text css={{ color: "$neutral500" }}>
+          {(totalAmount * 0.18).toFixed(2)}
+        </Text>
       </Flex>
       <Flex justifyContent="space-between">
-        <Text css={{ color: "gray" }}>Discount</Text>
+        <Text css={{ color: "$neutral500" }}>Discount</Text>
         <Select
           onChange={(e) => setDiscount(Number(e.value))}
           options={[
@@ -43,10 +45,16 @@ const OrderSummary = () => {
           ]}
         />
       </Flex>
-      <Flex css={{ border: "solid 1px gray" }}></Flex>
+      <Flex
+        css={{
+          borderWidth: "$xs",
+          borderColor: "$neutral500",
+          borderStyle: "solid",
+        }}
+      ></Flex>
       <Flex justifyContent="space-between">
-        <Text css={{ color: "red" }}>Order Total</Text>
-        <Text css={{ color: "red" }}>
+        <Text css={{ color: "$primary" }}>Order Total</Text>
+        <Text css={{ color: "$primary" }}>
           {(
             0.18 * totalAmount +
             totalAmount -
@@ -54,11 +62,17 @@ const OrderSummary = () => {
           ).toFixed(3)}
         </Text>
       </Flex>
-      <Flex css={{ border: "solid 1px gray" }}></Flex>
+      <Flex
+        css={{
+          borderWidth: "$xs",
+          borderColor: "$neutral500",
+          borderStyle: "solid",
+        }}
+      ></Flex>
       <Button
         size="md"
-        onClick={() =>
-          address === "" || address === null
+        onClick={() => {
+          !address.trim()
             ? toast({
                 variant: "error",
                 title: "Invalid Address",
@@ -68,8 +82,8 @@ const OrderSummary = () => {
                 variant: "success",
                 title: "Order confirmed",
                 description: `Your order will be delivered to ${address} `,
-              })
-        }
+              });
+        }}
       >
         Place Your Order
       </Button>

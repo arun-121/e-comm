@@ -12,7 +12,7 @@ const CartPage = () => {
         <Flex flexDirection="column" css={{ width: "100%" }}>
           <CartItems />
         </Flex>
-        <Flex>{cart.length !== 0 && <BagItems />}</Flex>
+        {cart.length !== 0 && <BagItems />}
       </Flex>
     </>
   );

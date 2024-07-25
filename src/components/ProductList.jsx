@@ -13,7 +13,6 @@ const ProductList = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleAddToCart = (id, title) => {
-    //toast
     dispatch(addToCart(id));
     toast({
       variant: "default",
@@ -41,10 +40,10 @@ const ProductList = () => {
   return (
     <>
       <Flex
+        wrap="wrap"
+        gap="$10"
         css={{
-          flexWrap: "wrap",
-          gap: "$10",
-          overflow: "scroll",
+          overflow: "auto",
           padding: "$2",
           width: "100%",
         }}
@@ -60,7 +59,7 @@ const ProductList = () => {
                 justifyContent: "space-between",
                 padding: "$2",
                 borderRadius: "13px",
-                background: "#ffffff",
+                background: "$white900",
 
                 "&:hover": {
                   boxShadow: " rgba(0, 0, 0, 0.35) 0px 5px 15px;",
@@ -75,7 +74,7 @@ const ProductList = () => {
                 css={{
                   cursor: "pointer",
                   height: "220px",
-                  background: "#ffffff",
+                  background: "$white900",
                   borderRadius: "10px",
                 }}
               >

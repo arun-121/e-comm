@@ -10,7 +10,7 @@ import {
   Toastr,
 } from "@sparrowengg/twigs-react";
 
-import theme from "./utils/twigs.config";
+import theme from "./twigs.config";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import CheckOutPage from "./pages/CheckOutPage";
@@ -28,15 +28,13 @@ root.render(
 );
 function RouteProvider() {
   return (
-    <>
-      <Router>
-        <Routes>
-          <Route path="/home" element={<HomePage />} />
-          <Route path="/checkout" element={<CheckOutPage />} />
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="product/:id" element={<ProductPage />} />
-        </Routes>
-      </Router>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/checkout" element={<CheckOutPage />} />
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="product/:id" element={<ProductPage />} />
+      </Routes>
+    </Router>
   );
 }

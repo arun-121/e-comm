@@ -18,12 +18,11 @@ const BagItems = () => {
     dispatch(setTotalAmount(total));
   }, [cart]);
   return (
-    <>
+    <Flex>
       <Flex
         flexDirection="column"
         justifyContent="space-between"
-        gap="$5"
-        css={{ width: "300px", overflow: "scroll", height: "100%" }}
+        css={{ width: "300px", height: "100%" }}
       >
         <Heading
           size="h2"
@@ -36,44 +35,50 @@ const BagItems = () => {
         </Heading>
 
         <Flex
-          css={{ flexWrap: "wrap", overflow: "scroll" }}
+          css={{ overflow: "auto" }}
           gap="$5"
           justifyContent="center"
+          wrap="wrap"
         >
-          {cart.map((ele) => (
+          {cart.map((cartItem) => (
             <Flex
               justifyContent="center"
               alignItems="center"
-              key={ele.id}
+              key={cartItem.id}
               css={{
                 width: "90px",
                 height: "90px",
-                background: "#ffffff",
+                background: "$white900",
                 borderRadius: "100%",
                 position: "relative",
               }}
             >
-              <img src={ele.image} alt="" width={"40px"} height={"40px"} />
+              <img
+                src={cartItem.image}
+                alt="product"
+                width={"40px"}
+                height={"40px"}
+              />
               <Flex
                 css={{
                   position: "absolute",
-                  width: "20px",
-                  height: "20px",
+                  width: "$5",
+                  height: "$5",
                   borderRadius: "100%",
                   top: 10,
                   left: 0,
-                  background: "red",
-                  color: "#ffffff",
+                  background: "$negative500",
+                  color: "$white900",
                 }}
               >
                 <Text css={{ textAlign: "center", width: "100%" }}>
-                  {ele.cartCount}
+                  {cartItem.cartCount}
                 </Text>
               </Flex>
             </Flex>
           ))}
         </Flex>
-        {cart.length == 0 && (
+        {!cart.length && (
           <Flex flexDirection="column">
             <Text
               css={{
@@ -91,7 +96,7 @@ const BagItems = () => {
                 }
                 width={"80px"}
                 height={"80px"}
-                alt=""
+                alt="empty cart"
               />
             </Flex>
           </Flex>
@@ -117,7 +122,7 @@ const BagItems = () => {
           </Flex>
         </Flex>
       </Flex>
-    </>
+    </Flex>
   );
 };
 export default BagItems;

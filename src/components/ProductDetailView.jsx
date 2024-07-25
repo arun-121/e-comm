@@ -11,15 +11,12 @@ const ProductDetailView = () => {
   const selectedProduct = products.find((ele) => ele.id === parseInt(id));
 
   return (
-    <Flex
-      flexDirection="column"
-      css={{ padding: "$10", gap: "$5", overflow: "scroll" }}
-    >
+    <Flex flexDirection="column" gap="$5" css={{ padding: "$10" }}>
       <Flex gap="$10">
         <Flex justifyContent="center" alignItems="center">
           <img
             src={selectedProduct?.image}
-            alt=""
+            alt="product"
             width={"500px"}
             height={"500px"}
             style={{ borderRadius: "20px" }}
@@ -33,11 +30,7 @@ const ProductDetailView = () => {
             >
               {selectedProduct?.title}
             </Text>
-            <Text
-              weight={"light"}
-              size={"md"}
-              css={{ color: "rgb(96, 105, 92)" }}
-            >
+            <Text weight={"light"} size={"md"} css={{ color: "$neutral700" }}>
               {selectedProduct?.category}
             </Text>
             <Flex alignItems="center" gap="$15">
@@ -62,7 +55,7 @@ const ProductDetailView = () => {
 
           <Button
             onClick={() => dispatch(addToCart(selectedProduct?.id))}
-            css={{ height: "60px" }}
+            css={{ height: "$15" }}
           >
             Add to Cart
           </Button>
@@ -70,7 +63,6 @@ const ProductDetailView = () => {
       </Flex>
       <Flex css={{ borderBottom: "solid 1px darkgray " }}> </Flex>
       review
-      {/* <Text css={{ heigh: "100%" }}>{selectedProduct?.description}</Text> */}
     </Flex>
   );
 };

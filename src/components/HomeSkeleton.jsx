@@ -1,17 +1,18 @@
 import { Flex } from "@sparrowengg/twigs-react";
+import { uiConstants } from "../constants/index";
 const HomeSkeleton = () => {
   return (
     <Flex
+      wrap="wrap"
       justifyContent="center"
       css={{
-        flexWrap: "wrap",
         gap: "$10",
         overflow: "scroll",
         padding: "$2",
         width: "100%",
       }}
     >
-      {new Array(20).fill("").map((ele, i) => (
+      {new Array(uiConstants.HOME_SKELETON_ITEMS_COUNT).fill("").map((_, i) => (
         <Flex
           key={i}
           css={{
@@ -19,7 +20,7 @@ const HomeSkeleton = () => {
             height: "330px",
             background: "lightgray",
           }}
-        ></Flex>
+        />
       ))}
     </Flex>
   );

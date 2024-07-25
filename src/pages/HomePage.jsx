@@ -14,9 +14,7 @@ const HomePage = () => {
         <SearchBar />
         <ProductList />
       </Flex>
-      <Flex>
-        <BagItems />
-      </Flex>
+      <BagItems />
     </Flex>
   );
 };

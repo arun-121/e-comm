@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const SearchBar = () => {
-  console.log("rendered");
   const navigate = useNavigate();
   const [query, setQuery] = useState("");
   const [isSearchFocused, setSearchFocused] = useState(false);
@@ -11,7 +10,6 @@ const SearchBar = () => {
   const [cachedResponse, setCachedResponse] = useState({});
 
   function fetchSuggestions() {
-    console.log("rendered");
     fetch(`http://localhost:3001/search/${query}`)
       .then((res) => res.json())
       .then((data) => {
@@ -21,7 +19,6 @@ const SearchBar = () => {
   }
 
   useEffect(() => {
-    console.log("query changed");
     if (query === "") return;
     if (cachedResponse[query]) {
       setSuggestionUI(cachedResponse[query]);
@@ -31,7 +28,6 @@ const SearchBar = () => {
       fetchSuggestions();
     }, 500);
     return () => {
-      console.log("unmounted");
       clearTimeout(delayedCall);
     };
   }, [query]);
@@ -50,30 +46,32 @@ const SearchBar = () => {
         <Input
           onChange={(e) => setQuery(e.target.value)}
           type="text"
+          size="lg"
           onFocus={() => setSearchFocused(true)}
           onBlur={() => setTimeout(() => setSearchFocused(false), 200)}
           css={{
             width: "500px",
-            height: "50px",
+
             padding: "$2",
             marginBottom: "$2",
           }}
-          placeholder="search here"
+          placeholder="search"
         />
 
         {isSearchFocused && query.length !== 0 && (
           <Flex
             flexDirection="column"
+            gap="$10"
             css={{
               borderRadius: "10px",
               background: "white",
               width: "500px",
               maxHeight: "200px",
-              overflow: "scroll",
+              overflow: "auto",
               position: "absolute",
               top: "100%",
               padding: "$5",
-              gap: "$10",
+
               zIndex: 10,
             }}
           >
@@ -82,9 +80,14 @@ const SearchBar = () => {
                 gap="$5"
                 key={ele.id}
                 css={{ cursor: "pointer" }}
-                onMouseDown={() => navigate(`/product/${ele.id}`)}
+                onClick={() => navigate(`/product/${ele.id}`)}
               >
-                <img src={ele.image} alt="" width={"40px"} height={"40px"} />
+                <img
+                  src={ele.image}
+                  alt="product"
+                  width={"40px"}
+                  height={"40px"}
+                />
                 <Text>{ele.title}</Text>
               </Flex>
             ))}

@@ -2,7 +2,7 @@ import ReactStarsRating from "react-awesome-stars-rating";
 import { addToCart, removeFromCart } from "../redux/actions";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Flex, Text, Button } from "@sparrowengg/twigs-react";
+import { Flex, Text, Heading, Button } from "@sparrowengg/twigs-react";
 import EmptyCartUI from "./EmptyCart";
 const CartItems = () => {
   const cart = useSelector((state) => state.cart);
@@ -12,29 +12,28 @@ const CartItems = () => {
   return (
     <>
       {cart.length === 0 ? (
-        // <Flex css={{ width: "100%" }}>
         <EmptyCartUI />
       ) : (
-        // </Flex>
         <Flex flexDirection="column" css={{ overflow: "scroll" }}>
-          <Text
+          <Heading
+            size="h2"
             css={{
               marginBlock: "$15",
               textAlign: "center",
-              fontSize: "$3xl",
             }}
           >
             Review Your Bag Items
-          </Text>
+          </Heading>
           <Flex
+            gap="$15"
             flexDirection="column"
-            css={{ overflow: "scroll", gap: "$15", padding: "$10" }}
+            css={{ overflow: "auto", padding: "$10" }}
           >
             {cart.map((ele) => (
               <Flex
                 key={ele.id}
                 css={{
-                  background: "#ffffff",
+                  background: "$white900",
                   borderRadius: "20px",
                   gap: "$5",
                   padding: "$5",
@@ -66,27 +65,26 @@ const CartItems = () => {
                     <Text weight={"bold"}>{ele.rating.rate}/5</Text>
                   </Flex>
                   <Flex justifyContent="space-between">
-                    <Text weight={"bold"}>₹ {ele.price}</Text>
+                    <Text weight={"bold"}>{`₹ ${ele.price}`}</Text>
                     <Flex gap="$5">
-                      <Text
+                      <Button
+                        color="error"
+                        variant={"outline"}
                         onClick={() => {
                           dispatch(removeFromCart(ele.id));
                         }}
-                        css={{ color: "red", cursor: "pointer" }}
-                        weight={"bold"}
                       >
                         -
-                      </Text>
+                      </Button>
                       <Text weight={"bold"}>{ele.cartCount}</Text>
-                      <Text
-                        weight={"bold"}
+                      <Button
+                        variant={"outline"}
                         onClick={() => {
                           dispatch(addToCart(ele.id));
                         }}
-                        css={{ color: "green", cursor: "pointer" }}
                       >
                         +
-                      </Text>
+                      </Button>
                     </Flex>
                   </Flex>
                 </Flex>
