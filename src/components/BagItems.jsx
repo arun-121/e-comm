@@ -11,6 +11,7 @@ const BagItems = () => {
 
   useEffect(() => {
     let total = 0;
+
     cart.forEach((ele) => {
       total = total + Number(ele.cartCount) * Number(ele.price);
     });

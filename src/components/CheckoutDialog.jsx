@@ -17,7 +17,6 @@ export const CheckoutDialog = () => {
         </Button>
       </DialogTrigger>
       <DialogContent>
-        <DialogTitle></DialogTitle>
         <ShippingAddress />
         <OrderSummary />
         <DialogClose asChild>

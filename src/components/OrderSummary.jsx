@@ -51,7 +51,7 @@ const OrderSummary = () => {
           borderColor: "$neutral500",
           borderStyle: "solid",
         }}
-      ></Flex>
+      />
       <Flex justifyContent="space-between">
         <Text css={{ color: "$primary" }}>Order Total</Text>
         <Text css={{ color: "$primary" }}>
@@ -68,7 +68,7 @@ const OrderSummary = () => {
           borderColor: "$neutral500",
           borderStyle: "solid",
         }}
-      ></Flex>
+      />
       <Button
         size="md"
         onClick={() => {
